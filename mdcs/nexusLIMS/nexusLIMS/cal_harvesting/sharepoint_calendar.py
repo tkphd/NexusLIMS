@@ -114,7 +114,7 @@ def fetch_xml(instrument=None):
     # and
     # https://gitlab.nist.gov/gitlab/nexuslims/NexusMicroscopyLIMS/wikis/Sharepoint-Calendar-Information
     instr_input_dict = {
-        'msed_titan': "FEITitanTEM",
+        'msed_titan': "***REMOVED***",
         'quanta': "***REMOVED***",
         'jeol_sem': "***REMOVED***",
         'hitachi_sem': "***REMOVED***",
@@ -122,8 +122,8 @@ def fetch_xml(instrument=None):
         'cm30': "***REMOVED***",
         'em400': "***REMOVED***",
         'hitachi_s5500': "***REMOVED***",
-        'mmsd_titan': "FEITitanSTEM",
-        'fei_helios_db': "FEIHeliosDB"
+        'mmsd_titan': "***REMOVED***",
+        'fei_helios_db': "***REMOVED***"
     }
 
     all_events = list(instr_input_dict.values())
