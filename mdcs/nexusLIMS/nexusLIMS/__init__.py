@@ -29,3 +29,8 @@
 from .schemas.activity import AcquisitionActivity
 from .cal_harvesting import sharepoint_calendar
 from .dev_scripts import record_builder
+
+nexus_paths = {'limsimages': '/***REMOVED***',
+               '***REMOVED***': '/mnt/***REMOVED***/',
+               '***REMOVED***': 'C:/***REMOVED***/mmfnexus/',
+               'gitlab.nist.gov': ''}
