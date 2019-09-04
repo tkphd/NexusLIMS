@@ -26,22 +26,4 @@
 #  OR USE OF, THE SOFTWARE OR SERVICES PROVIDED HEREUNDER.
 #
 
-from ._calendar_root_url import calendar_root_url
-from .schemas.activity import AcquisitionActivity
-from .harvester import sharepoint_calendar
-from .builder import record_builder
-
-import socket as _socket
-
-_mmf_nexus_paths = {'limsimages': '/***REMOVED***',
-                    '***REMOVED***': '/mnt/***REMOVED***/',
-                    '***REMOVED***': 'C:/***REMOVED***/mmfnexus/',
-                    'gitlab.nist.gov': ''}
-
-_nexuslims_paths = {'limsimages': '/data/smb/nexusLIMS/mmfnexus/',
-                    '***REMOVED***': '/mnt/cfs2e_***REMOVED***/nexusLIMS/mmfnexus/',
-                    '***REMOVED***': 'C:/***REMOVED***/nexusLIMS/mmfnexus/',
-                    'gitlab.nist.gov': ''}
-
-mmf_nexus_root_path = _mmf_nexus_paths[_socket.gethostname()]
-nexuslims_root_path = _nexuslims_paths[_socket.gethostname()]
+calendar_root_url = 'https://***REMOVED***/***REMOVED***/'
