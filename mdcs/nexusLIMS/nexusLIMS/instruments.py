@@ -54,6 +54,7 @@ class _Instrument:
     calendar_url : str or None
     location : str or None
     name : str or None
+    schema_name : str or None
     property_tag : str or None
     filestore_path : str or None
     """
@@ -63,6 +64,7 @@ class _Instrument:
                  calendar_url=None,
                  location=None,
                  name=None,
+                 schema_name=None,
                  property_tag=None,
                  filestore_path=None):
         """
@@ -73,6 +75,7 @@ class _Instrument:
         self.calendar_url = calendar_url
         self.location = location
         self.name = name
+        self.schema_name = schema_name
         self.property_tag = property_tag
         self.filestore_path = filestore_path
 
@@ -81,6 +84,7 @@ class _Instrument:
                f'API url: {self.api_url}\n' \
                f'Calendar name: {self.calendar_name}\n' \
                f'Calendar url: {self.calendar_url}\n' \
+               f'Schema name: {self.schema_name}\n' \
                f'Location: {self.location}\n' \
                f'Property tag: {self.property_tag}\n' \
                f'Filestore path: {self.filestore_path}'
@@ -96,6 +100,7 @@ instrument_db = {
                     calendar_url=_get_cal_url('***REMOVED***'),
                     location='***REMOVED***',
                     name='***REMOVED***',
+                    schema_name='FEI Helios',
                     property_tag='***REMOVED***',
                     filestore_path=None),
     '***REMOVED***':
@@ -104,6 +109,7 @@ instrument_db = {
                     calendar_url=_get_cal_url('***REMOVED***'),
                     location='***REMOVED***',
                     name='***REMOVED***',
+                    schema_name='FEI Quanta200',
                     property_tag='***REMOVED***',
                     filestore_path='./Quanta'),
     '***REMOVED***':
@@ -112,6 +118,7 @@ instrument_db = {
                     calendar_url=_get_cal_url('***REMOVED***'),
                     location='***REMOVED***',
                     name='***REMOVED***',
+                    schema_name='FEI Titan STEM',
                     property_tag='***REMOVED***',
                     filestore_path=None),
     '***REMOVED***':
@@ -120,6 +127,7 @@ instrument_db = {
                     calendar_url=_get_cal_url('***REMOVED***'),
                     location='***REMOVED***',
                     name='***REMOVED***',
+                    schema_name='FEI Titan TEM',
                     property_tag='***REMOVED***',
                     filestore_path='./Titan'),
     '***REMOVED***':
@@ -128,6 +136,7 @@ instrument_db = {
                     calendar_url=_get_cal_url('***REMOVED***'),
                     location='***REMOVED***',
                     name='***REMOVED***',
+                    schema_name='Hitachi S4700',
                     property_tag='***REMOVED***',
                     filestore_path=None),
     '***REMOVED***':
@@ -136,6 +145,7 @@ instrument_db = {
                     calendar_url=_get_cal_url('***REMOVED***'),
                     location='***REMOVED***',
                     name='***REMOVED***',
+                    schema_name='Hitachi S5500',
                     property_tag='***REMOVED***',
                     filestore_path=None),
     '***REMOVED***':
@@ -144,6 +154,7 @@ instrument_db = {
                     calendar_url=_get_cal_url('***REMOVED***'),
                     location='***REMOVED***',
                     name='***REMOVED***',
+                    schema_name='JEOL ***REMOVED***',
                     property_tag='***REMOVED***',
                     filestore_path='./JEOL3010'),
     '***REMOVED***':
@@ -152,6 +163,7 @@ instrument_db = {
                     calendar_url=_get_cal_url('***REMOVED***'),
                     location='***REMOVED***',
                     name='***REMOVED***',
+                    schema_name='JEOL JSM7100',
                     property_tag='***REMOVED***',
                     filestore_path='./7100Jeol'),
     '***REMOVED***':
@@ -160,6 +172,7 @@ instrument_db = {
                     calendar_url=_get_cal_url('***REMOVED***'),
                     location='***REMOVED***',
                     name='***REMOVED***',
+                    schema_name='Philips CM30',
                     property_tag='***REMOVED***',
                     filestore_path=None),
     '***REMOVED***':
@@ -168,6 +181,7 @@ instrument_db = {
                     calendar_url=_get_cal_url('***REMOVED***'),
                     location='***REMOVED***',
                     name='***REMOVED***',
+                    schema_name='Philips EM400',
                     property_tag='***REMOVED***',
                     filestore_path=None)
 }
