@@ -102,7 +102,7 @@ instrument_db = {
                     name='***REMOVED***',
                     schema_name='FEI Helios',
                     property_tag='***REMOVED***',
-                    filestore_path=None),
+                    filestore_path='./Aphrodite'),
     '***REMOVED***':
         _Instrument(api_url=_get_api_url('***REMOVED***'),
                     calendar_name='FEI Quanta200',
@@ -120,7 +120,7 @@ instrument_db = {
                     name='***REMOVED***',
                     schema_name='FEI Titan STEM',
                     property_tag='***REMOVED***',
-                    filestore_path=None),
+                    filestore_path='./643Titan'),
     '***REMOVED***':
         _Instrument(api_url=_get_api_url('***REMOVED***'),
                     calendar_name='FEI Titan TEM',
@@ -138,7 +138,7 @@ instrument_db = {
                     name='***REMOVED***',
                     schema_name='Hitachi S4700',
                     property_tag='***REMOVED***',
-                    filestore_path=None),
+                    filestore_path='./***REMOVED***'),
     '***REMOVED***':
         _Instrument(api_url=_get_api_url('***REMOVED***'),
                     calendar_name='Hitachi-S5500',
@@ -147,7 +147,7 @@ instrument_db = {
                     name='***REMOVED***',
                     schema_name='Hitachi S5500',
                     property_tag='***REMOVED***',
-                    filestore_path=None),
+                    filestore_path='./S5500'),
     '***REMOVED***':
         _Instrument(api_url=_get_api_url('***REMOVED***'),
                     calendar_name='JEOL ***REMOVED***',
@@ -174,7 +174,7 @@ instrument_db = {
                     name='***REMOVED***',
                     schema_name='Philips CM30',
                     property_tag='***REMOVED***',
-                    filestore_path=None),
+                    filestore_path='./***REMOVED***'),
     '***REMOVED***':
         _Instrument(api_url=_get_api_url('***REMOVED***'),
                     calendar_name='Philips EM400',
@@ -183,5 +183,5 @@ instrument_db = {
                     name='***REMOVED***',
                     schema_name='Philips EM400',
                     property_tag='***REMOVED***',
-                    filestore_path=None)
+                    filestore_path='./EM400')
 }
