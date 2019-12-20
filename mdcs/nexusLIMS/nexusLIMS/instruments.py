@@ -26,20 +26,42 @@
 #  OR USE OF, THE SOFTWARE OR SERVICES PROVIDED HEREUNDER.
 #
 
-import urllib.parse as _urlparse
-from nexusLIMS import calendar_root_url
+from nexusLIMS import nexuslims_db_path
+import sqlite3
+import contextlib
 
 
-def _get_cal_url(instr_id):
-    cal_url = _urlparse.urljoin(f'{calendar_root_url}',
-                                f'Lists/{instr_id}/calendar.aspx')
-    return cal_url
+def _get_instrument_db():
+    """
+    Connect to the NexusLIMS database and get a list of all the instruments
+    contained within
 
+    Returns
+    -------
+    instrument_db : dict
+        A dictionary of `_Instrument` instances that describe all the
+        instruments that were found in the ``instruments`` table of the
+        NexusLIMS database
+    """
+    query = "SELECT * from instruments"
+    # use contextlib to auto-close the connection and database cursors
+    with contextlib.closing(sqlite3.connect(nexuslims_db_path)) as conn:
+        with conn:  # auto-commits
+            with contextlib.closing(conn.cursor()) as cursor:  # auto-closes
+                results = cursor.execute(query).fetchall()
+                col_names = list(map(lambda x: x[0], cursor.description))
 
-def _get_api_url(instr_id):
-    api_url = _urlparse.urljoin(f'{calendar_root_url}',
-                                f'_vti_bin/ListData.svc/{instr_id}')
-    return api_url
+    instr_db = {}
+    for l in results:
+        this_dict = {}
+        for key, val in zip(col_names, l):
+            this_dict[key] = val
+
+        key = this_dict.pop('instrument_pid')
+        this_dict['name'] = key
+        instr_db[key] = _Instrument(**this_dict)
+
+    return instr_db
 
 
 class _Instrument:
@@ -66,7 +88,10 @@ class _Instrument:
                  name=None,
                  schema_name=None,
                  property_tag=None,
-                 filestore_path=None):
+                 filestore_path=None,
+                 computer_ip=None,
+                 computer_name=None,
+                 computer_mount=None):
         """
         Create a new Instrument
         """
@@ -78,6 +103,9 @@ class _Instrument:
         self.schema_name = schema_name
         self.property_tag = property_tag
         self.filestore_path = filestore_path
+        self.computer_ip = computer_ip
+        self.computer_name = computer_name
+        self.computer_mount = computer_mount
 
     def __repr__(self):
         return f'Nexus Instrument: {self.name}\n' \
@@ -87,101 +115,13 @@ class _Instrument:
                f'Schema name: {self.schema_name}\n' \
                f'Location: {self.location}\n' \
                f'Property tag: {self.property_tag}\n' \
-               f'Filestore path: {self.filestore_path}'
+               f'Filestore path: {self.filestore_path}\n' \
+               f'Computer IP: {self.computer_ip}\n ' \
+               f'Computer name: {self.computer_name}\n ' \
+               f'Computer mount: {self.computer_mount}\n'
 
     def __str__(self):
         return f'{self.name}' + f' in {self.location}' if self.location else ''
 
 
-instrument_db = {
-    '***REMOVED***':
-        _Instrument(api_url=_get_api_url('***REMOVED***'),
-                    calendar_name='FEI HeliosDB',
-                    calendar_url=_get_cal_url('***REMOVED***'),
-                    location='***REMOVED***',
-                    name='***REMOVED***',
-                    schema_name='FEI Helios',
-                    property_tag='***REMOVED***',
-                    filestore_path='./Aphrodite'),
-    '***REMOVED***':
-        _Instrument(api_url=_get_api_url('***REMOVED***'),
-                    calendar_name='FEI Quanta200',
-                    calendar_url=_get_cal_url('***REMOVED***'),
-                    location='***REMOVED***',
-                    name='***REMOVED***',
-                    schema_name='FEI Quanta200',
-                    property_tag='***REMOVED***',
-                    filestore_path='./Quanta'),
-    '***REMOVED***':
-        _Instrument(api_url=_get_api_url('***REMOVED***'),
-                    calendar_name='FEI Titan STEM',
-                    calendar_url=_get_cal_url('***REMOVED***'),
-                    location='***REMOVED***',
-                    name='***REMOVED***',
-                    schema_name='FEI Titan STEM',
-                    property_tag='***REMOVED***',
-                    filestore_path='./643Titan'),
-    '***REMOVED***':
-        _Instrument(api_url=_get_api_url('***REMOVED***'),
-                    calendar_name='FEI Titan TEM',
-                    calendar_url=_get_cal_url('***REMOVED***'),
-                    location='***REMOVED***',
-                    name='***REMOVED***',
-                    schema_name='FEI Titan TEM',
-                    property_tag='***REMOVED***',
-                    filestore_path='./Titan'),
-    '***REMOVED***':
-        _Instrument(api_url=_get_api_url('***REMOVED***'),
-                    calendar_name='Hitachi S4700',
-                    calendar_url=_get_cal_url('***REMOVED***'),
-                    location='***REMOVED***',
-                    name='***REMOVED***',
-                    schema_name='Hitachi S4700',
-                    property_tag='***REMOVED***',
-                    filestore_path='./***REMOVED***'),
-    '***REMOVED***':
-        _Instrument(api_url=_get_api_url('***REMOVED***'),
-                    calendar_name='Hitachi-S5500',
-                    calendar_url=_get_cal_url('***REMOVED***'),
-                    location='***REMOVED***',
-                    name='***REMOVED***',
-                    schema_name='Hitachi S5500',
-                    property_tag='***REMOVED***',
-                    filestore_path='./S5500'),
-    '***REMOVED***':
-        _Instrument(api_url=_get_api_url('***REMOVED***'),
-                    calendar_name='JEOL ***REMOVED***',
-                    calendar_url=_get_cal_url('***REMOVED***'),
-                    location='***REMOVED***',
-                    name='***REMOVED***',
-                    schema_name='JEOL ***REMOVED***',
-                    property_tag='***REMOVED***',
-                    filestore_path='./JEOL3010'),
-    '***REMOVED***':
-        _Instrument(api_url=_get_api_url('***REMOVED***'),
-                    calendar_name='JEOL JSM7100',
-                    calendar_url=_get_cal_url('***REMOVED***'),
-                    location='***REMOVED***',
-                    name='***REMOVED***',
-                    schema_name='JEOL JSM7100',
-                    property_tag='***REMOVED***',
-                    filestore_path='./7100Jeol'),
-    '***REMOVED***':
-        _Instrument(api_url=_get_api_url('***REMOVED***'),
-                    calendar_name='Philips CM30',
-                    calendar_url=_get_cal_url('***REMOVED***'),
-                    location='***REMOVED***',
-                    name='***REMOVED***',
-                    schema_name='Philips CM30',
-                    property_tag='***REMOVED***',
-                    filestore_path='./***REMOVED***'),
-    '***REMOVED***':
-        _Instrument(api_url=_get_api_url('***REMOVED***'),
-                    calendar_name='Philips EM400',
-                    calendar_url=_get_cal_url('***REMOVED***'),
-                    location='***REMOVED***',
-                    name='***REMOVED***',
-                    schema_name='Philips EM400',
-                    property_tag='***REMOVED***',
-                    filestore_path='./EM400')
-}
+instrument_db = _get_instrument_db()
