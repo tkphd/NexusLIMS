@@ -55,7 +55,7 @@ CREATE TABLE "nexuslims_db"."session_log"(
   "instrument" VARCHAR(100) NOT NULL,-- The instrument associated with this session (foreign key reference to the 'instruments' table)
   "timestamp" DATETIME NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%f', 'now', 'localtime')),-- The date and time of the logged event
   "event_type" TEXT NOT NULL CHECK("event_type" IN('START', 'END', 'RECORD_GENERATION')),-- The type of log for this session either "START" or "END"
-  "record_status" TEXT NOT NULL CHECK("record_status" IN('COMPLETED', 'WAITING_FOR_END', 'TO_BE_BUILT')) DEFAULT 'WAITING_FOR_END',-- The status of the record associated with this session. One of 'WAITING_FOR_END' (has a start event, but no end event), 'TO_BE_BUILT' (session has ended, but record not yet built), or 'COMPLETED' (record has been built)
+  "record_status" TEXT NOT NULL CHECK("record_status" IN('COMPLETED', 'WAITING_FOR_END', 'TO_BE_BUILT', 'ERROR', 'NO_FILES_FOUND')) DEFAULT 'WAITING_FOR_END',-- The status of the record associated with this session. One of 'WAITING_FOR_END' (has a start event, but no end event), 'TO_BE_BUILT' (session has ended, but record not yet built), 'COMPLETED' (record has been built successfully), 'ERROR' (some error happened during record generation), or 'NO_FILES_FOUND' (record generation occurred, but no files matched time span)
   "user" VARCHAR(50),-- The NIST "short style" username associated with this session (if known)
   CONSTRAINT "id_session_log_UNIQUE"
     UNIQUE("id_session_log"),
