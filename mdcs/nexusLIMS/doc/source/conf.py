@@ -235,8 +235,6 @@ html_theme_options = {
 rst_epilog = """
 .. |SQLSchemaLink| replace:: SQL Schema Definition
 .. _SQLSchemaLink: https://gitlab.nist.gov/gitlab/nexuslims/NexusMicroscopyLIMS/blob/master/mdcs/nexusLIMS/nexusLIMS/db/NexusLIMS_db_creation_script.sql
-.. |CoverageLink| replace:: test coverage
-.. _CoverageLink: http://nexuslims.ipages.nist.gov/NexusMicroscopyLIMS/coverage/
 .. |RepoLink| replace:: repository
 .. _RepoLink: https://gitlab.nist.gov/gitlab/nexuslims/NexusMicroscopyLIMS
 """
