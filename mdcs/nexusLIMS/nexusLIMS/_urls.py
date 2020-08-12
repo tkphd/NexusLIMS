@@ -28,5 +28,4 @@
 
 calendar_root_url = 'https://***REMOVED***/***REMOVED***/'
 ldap_url = 'ldap://***REMOVED***'
-#cdcs_url = 'https://***REMOVED***/'
 cdcs_url = 'https://***REMOVED***/'
