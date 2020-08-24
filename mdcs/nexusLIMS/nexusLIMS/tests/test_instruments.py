@@ -27,9 +27,7 @@
 #
 
 import os
-from nexusLIMS.instruments import Instrument
-from nexusLIMS.instruments import instrument_db
-from nexusLIMS.instruments import get_instr_from_filepath
+from nexusLIMS.instruments import *
 
 
 class TestInstruments:
@@ -88,4 +86,13 @@ class TestInstruments:
         assert instr.name == '***REMOVED***'
 
         instr = get_instr_from_filepath('bad_path_no_instrument')
+        assert instr is None
+
+    def test_get_instr_from_cal_name(self):
+        instr = get_instr_from_calendar_name('***REMOVED***')
+        assert isinstance(instr, Instrument)
+        assert instr == instrument_db['***REMOVED***']
+
+    def test_get_instr_from_cal_name_none(self):
+        instr = get_instr_from_calendar_name('bogus calendar name')
         assert instr is None
