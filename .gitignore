@@ -21,7 +21,7 @@ test_db.sqlite
 test_data/
 **/doc/build
 **/db_logger_gui/build
-mdcs/nexusLIMS/doc/source/api/*.rst
+nexuslims/doc/source/api/*.rst
 _coverage_output
 .venv/
 *.sqbpro
@@ -37,4 +37,4 @@ htmlcov/
 
 # Oxygen project files
 *.xpr
-/mdcs/nexusLIMS/nexusLIMS/db/build/
+/nexuslims/nexusLIMS/db/build/

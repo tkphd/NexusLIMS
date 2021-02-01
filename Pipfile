@@ -19,7 +19,7 @@ ntlm-auth = "*"
 pytz = "*"
 ldap3 = "*"
 hyperspy = {editable = true, git = "https://github.com/hyperspy/hyperspy.git", ref = "RELEASE_next_patch"}
-nexuslims = {editable = true,path = "./mdcs/nexusLIMS"}
+nexuslims = {editable = true,path = "./nexuslims"}
 #hyperspy = "1.5.2"
 tifffile = "==2019.7.26.2"
 scikit-learn = "*"

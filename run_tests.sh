@@ -22,18 +22,18 @@ while test $# -ge 1; do
       ;;
     -g|--generate-test-figs)
       echo "Generating test images for mpl tests..."
-      pipenv run pytest mdcs/nexusLIMS/nexusLIMS/tests/test_extractors.py \
+      pipenv run pytest nexuslims/nexusLIMS/tests/test_extractors.py \
              -k TestThumbnailGenerator \
-             --mpl-generate-path=mdcs/nexusLIMS/nexusLIMS/tests/files/figs
+             --mpl-generate-path=nexuslims/nexusLIMS/tests/files/figs
       echo ""
       break
       ;;
     -r|--run-tests)
       rm .coverage
       echo "Running test suite with coverage..."
-      pipenv run pytest mdcs/nexusLIMS/nexusLIMS/tests \
-        --cov=mdcs/nexusLIMS/nexusLIMS \
-        --mpl --mpl-baseline-path=mdcs/nexusLIMS/nexusLIMS/tests/files/figs
+      pipenv run pytest nexuslims/nexusLIMS/tests \
+        --cov=nexuslims/nexusLIMS \
+        --mpl --mpl-baseline-path=nexuslims/nexusLIMS/tests/files/figs
       break
       ;;
     -rh|--run-tests-htmlcov)
@@ -42,10 +42,10 @@ while test $# -ge 1; do
       rm .coverage
       rm .coverage.*
       echo "Running test suite with coverage (HTML output)..."
-      pipenv run pytest mdcs/nexusLIMS/nexusLIMS/tests \
-        --cov=mdcs/nexusLIMS/nexusLIMS \
+      pipenv run pytest nexuslims/nexusLIMS/tests \
+        --cov=nexuslims/nexusLIMS \
         --cov-report html:$(pwd)/htmlcov \
-        --mpl --mpl-baseline-path=mdcs/nexusLIMS/nexusLIMS/tests/files/figs
+        --mpl --mpl-baseline-path=nexuslims/nexusLIMS/tests/files/figs
       break
       ;;
     -rb)
@@ -54,11 +54,11 @@ while test $# -ge 1; do
       rm .coverage
       rm .coverage.*
       echo "Running record builder test suite with coverage..."
-      pipenv run pytest mdcs/nexusLIMS/nexusLIMS/tests \
+      pipenv run pytest nexuslims/nexusLIMS/tests \
         -k "test_records" \
-        --cov=mdcs/nexusLIMS/nexusLIMS \
+        --cov=nexuslims/nexusLIMS \
         --cov-report html:$(pwd)/htmlcov \
-        --mpl --mpl-baseline-path=mdcs/nexusLIMS/nexusLIMS/tests/files/figs
+        --mpl --mpl-baseline-path=nexuslims/nexusLIMS/tests/files/figs
       break
       ;;
   esac

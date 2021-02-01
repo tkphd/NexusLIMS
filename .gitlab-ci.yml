@@ -6,7 +6,7 @@ nexusLIMS_tests_37:
   stage: test
   script:
     # run tests with coverage and output coverage report to html
-    - pipenv run pytest mdcs/nexusLIMS/nexusLIMS/tests --cov=mdcs/nexusLIMS/nexusLIMS --cov-report html:$(pwd)/coverage --cov-report term --mpl --mpl-baseline-path=mdcs/nexusLIMS/nexusLIMS/tests/files/figs
+    - pipenv run pytest nexuslims/nexusLIMS/tests --cov=nexuslims/nexusLIMS --cov-report html:$(pwd)/coverage --cov-report term --mpl --mpl-baseline-path=nexuslims/nexusLIMS/tests/files/figs
   # Install the environment
   before_script:
     # before anything, try to remove the existing conda environment and replace
@@ -36,7 +36,7 @@ nexusLIMS_tests_38:
   stage: test
   script:
     # run tests with coverage and output coverage report to html
-    - pipenv run pytest mdcs/nexusLIMS/nexusLIMS/tests --mpl --mpl-baseline-path=mdcs/nexusLIMS/nexusLIMS/tests/files/figs
+    - pipenv run pytest nexuslims/nexusLIMS/tests --mpl --mpl-baseline-path=nexuslims/nexusLIMS/tests/files/figs
   # Install the environment
   before_script:
     # before anything, try to remove the existing conda environment and replace
@@ -59,7 +59,7 @@ nexusLIMS_tests_38:
 pages:
   stage: deploy
   script:
-    - pipenv run python -m sphinx.cmd.build mdcs/nexusLIMS/doc/source public/doc -n -E -a -j auto -b html
+    - pipenv run python -m sphinx.cmd.build nexuslims/doc/source public/doc -n -E -a -j auto -b html
   before_script:
     # before anything, remove the existing conda environment and rebuild
     # with gitlab cache, returning true whether or not we succeeded

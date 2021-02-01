@@ -439,7 +439,7 @@
         },
         "nexuslims": {
             "editable": true,
-            "path": "./mdcs/nexusLIMS"
+            "path": "./nexuslims"
         },
         "ntlm-auth": {
             "hashes": [

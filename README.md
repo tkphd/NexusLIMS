@@ -51,7 +51,7 @@ diffraction pattern of a quasicrystal as inspiration for the NexusLIMS
 logo due to its significance in the electron microscopy and
 crystallography communities, together with its storied NIST heritage:
 
-![NexusLIMS Logo Inspiration](mdcs/nexusLIMS/doc/source/_static/logo_inspiration.png)
+![NexusLIMS Logo Inspiration](nexuslims/doc/source/_static/logo_inspiration.png)
 
 ## About the developers
 

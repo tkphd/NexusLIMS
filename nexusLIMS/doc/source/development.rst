@@ -135,44 +135,44 @@ the `"reference"` images that are tested against. For example:
 .. code:: bash
 
    $ cd <path_to_repo>
-   $ pipenv run pytest mdcs/nexusLIMS/nexusLIMS/tests --cov=mdcs/nexusLIMS/nexusLIMS \
-        --cov-report term --mpl --mpl-baseline-path=mdcs/nexusLIMS/nexusLIMS/tests/files/figs
+   $ pipenv run pytest nexuslims/nexusLIMS/tests --cov=nexuslims/nexusLIMS \
+        --cov-report term --mpl --mpl-baseline-path=nexuslims/nexusLIMS/tests/files/figs
 
    # ============================= test session starts ==============================
    # platform linux -- Python 3.7.5, pytest-5.3.5, py-1.8.1, pluggy-0.13.1
    # Matplotlib: 3.1.3
    # Freetype: 2.6.1
-   # rootdir: mdcs/nexusLIMS/nexusLIMS/tests, inifile: pytest.ini
+   # rootdir: nexuslims/nexusLIMS/tests, inifile: pytest.ini
    # plugins: mpl-0.11, cov-2.8.1, sugar-0.9.2
    # collected 104 items
    #
-   # mdcs/nexusLIMS/nexusLIMS/tests/test_calendar_handling.py .............................. [ 28%]
-   # mdcs/nexusLIMS/nexusLIMS/tests/test_extractors.py ..................................... [ 64%]
-   # mdcs/nexusLIMS/nexusLIMS/tests/test_instruments.py .....                                [ 69%]
-   # mdcs/nexusLIMS/nexusLIMS/tests/test_records.py ......................                   [ 90%]
-   # mdcs/nexusLIMS/nexusLIMS/tests/test_utils.py .........                                  [ 99%]
-   # mdcs/nexusLIMS/nexusLIMS/tests/test_version.py .                                        [100%]
+   # nexuslims/nexusLIMS/tests/test_calendar_handling.py .............................. [ 28%]
+   # nexuslims/nexusLIMS/tests/test_extractors.py ..................................... [ 64%]
+   # nexuslims/nexusLIMS/tests/test_instruments.py .....                                [ 69%]
+   # nexuslims/nexusLIMS/tests/test_records.py ......................                   [ 90%]
+   # nexuslims/nexusLIMS/tests/test_utils.py .........                                  [ 99%]
+   # nexuslims/nexusLIMS/tests/test_version.py .                                        [100%]
    #
    # ----------- coverage: platform linux, python 3.7.5-final-0 ---------------------
    # Name                                                         Stmts   Miss  Cover
    # --------------------------------------------------------------------------------
-   # mdcs/nexusLIMS/nexusLIMS/__init__.py                             8      0   100%
-   # mdcs/nexusLIMS/nexusLIMS/_urls.py                                3      0   100%
-   # mdcs/nexusLIMS/nexusLIMS/builder/__init__.py                     0      0   100%
-   # mdcs/nexusLIMS/nexusLIMS/builder/record_builder.py             149      0   100%
-   # mdcs/nexusLIMS/nexusLIMS/cdcs.py                                69      0   100%
-   # mdcs/nexusLIMS/nexusLIMS/db/__init__.py                         10      0   100%
-   # mdcs/nexusLIMS/nexusLIMS/db/session_handler.py                  72      0   100%
-   # mdcs/nexusLIMS/nexusLIMS/extractors/__init__.py                 65      0   100%
-   # mdcs/nexusLIMS/nexusLIMS/extractors/digital_micrograph.py      421      0   100%
-   # mdcs/nexusLIMS/nexusLIMS/extractors/fei_emi.py                   0      0   100%
-   # mdcs/nexusLIMS/nexusLIMS/extractors/quanta_tif.py              197      0   100%
-   # mdcs/nexusLIMS/nexusLIMS/extractors/thumbnail_generator.py     329      0   100%
-   # mdcs/nexusLIMS/nexusLIMS/harvester/__init__.py                   0      0   100%
-   # mdcs/nexusLIMS/nexusLIMS/harvester/sharepoint_calendar.py      108      0   100%
-   # mdcs/nexusLIMS/nexusLIMS/instruments.py                         44      0   100%
-   # mdcs/nexusLIMS/nexusLIMS/schemas/__init__.py                     0      0   100%
-   # mdcs/nexusLIMS/nexusLIMS/schemas/activity.py                   151      0   100%
+   # nexuslims/nexusLIMS/__init__.py                             8      0   100%
+   # nexuslims/nexusLIMS/_urls.py                                3      0   100%
+   # nexuslims/nexusLIMS/builder/__init__.py                     0      0   100%
+   # nexuslims/nexusLIMS/builder/record_builder.py             149      0   100%
+   # nexuslims/nexusLIMS/cdcs.py                                69      0   100%
+   # nexuslims/nexusLIMS/db/__init__.py                         10      0   100%
+   # nexuslims/nexusLIMS/db/session_handler.py                  72      0   100%
+   # nexuslims/nexusLIMS/extractors/__init__.py                 65      0   100%
+   # nexuslims/nexusLIMS/extractors/digital_micrograph.py      421      0   100%
+   # nexuslims/nexusLIMS/extractors/fei_emi.py                   0      0   100%
+   # nexuslims/nexusLIMS/extractors/quanta_tif.py              197      0   100%
+   # nexuslims/nexusLIMS/extractors/thumbnail_generator.py     329      0   100%
+   # nexuslims/nexusLIMS/harvester/__init__.py                   0      0   100%
+   # nexuslims/nexusLIMS/harvester/sharepoint_calendar.py      108      0   100%
+   # nexuslims/nexusLIMS/instruments.py                         44      0   100%
+   # nexuslims/nexusLIMS/schemas/__init__.py                     0      0   100%
+   # nexuslims/nexusLIMS/schemas/activity.py                   151      0   100%
    # test_calendar_handling.py                                      154      0   100%
    # test_extractors.py                                             379      0   100%
    # test_instruments.py                                             27      0   100%
@@ -180,7 +180,7 @@ the `"reference"` images that are tested against. For example:
    # test_utils.py                                                   61      0   100%
    # test_version.py                                                  5      0   100%
    # utils.py                                                         7      0   100%
-   # mdcs/nexusLIMS/nexusLIMS/utils.py                              135      0   100%
-   # mdcs/nexusLIMS/nexusLIMS/version.py                              2      0   100%
+   # nexuslims/nexusLIMS/utils.py                              135      0   100%
+   # nexuslims/nexusLIMS/version.py                              2      0   100%
    # --------------------------------------------------------------------------------
    # TOTAL                                                         2577      0   100%

@@ -1,8 +1,8 @@
 [run]
 omit =
-    mdcs/nexusLIMS/nexusLIMS/dev_scripts/*
-    mdcs/nexusLIMS/nexusLIMS/db/migrate_db.py
-    mdcs/nexusLIMS/nexusLIMS/tests/conftest.py
+    nexuslims/nexusLIMS/dev_scripts/*
+    nexuslims/nexusLIMS/db/migrate_db.py
+    nexuslims/nexusLIMS/tests/conftest.py
 
 [report]
 exclude_lines =
