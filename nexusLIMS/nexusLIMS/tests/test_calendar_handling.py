@@ -37,7 +37,7 @@ class TestCalendarHandling:
     #  The only modification made is the manual removal of
     #  'xmlns="http://www.w3.org/2005/Atom"' from the top level element,
     #  since this is done by fetch_xml() in the actual processing
-    instr_url = instrument_db['***REMOVED***'].api_url + \
+    instr_url = instrument_db['**REMOVED**'].api_url + \
                 '?$expand=CreatedBy'
     xml_content = _nexus_req(instr_url, requests.get).text.replace(
         'xmlns="http://www.w3.org/2005/Atom"', '')
@@ -61,7 +61,7 @@ class TestCalendarHandling:
         # should be 10 items
         parsed_xml['user'] = _parse_xml(xml=file_content,
                                         xslt_file=self.SC_XSL_FILE,
-                                        user="***REMOVED***")
+                                        user="**REMOVED**")
         # should be 2 items
         parsed_xml['date'] = _parse_xml(xml=file_content,
                                         xslt_file=self.SC_XSL_FILE,
@@ -70,7 +70,7 @@ class TestCalendarHandling:
         parsed_xml['date_and_user'] = _parse_xml(xml=file_content,
                                                  xslt_file=self.SC_XSL_FILE,
                                                  date='2019-03-06',
-                                                 user='***REMOVED***')
+                                                 user='**REMOVED**')
 
         # convert parsing result to string and wrap so we have well-formed xml:
         xml_strings = dict()
@@ -90,34 +90,34 @@ class TestCalendarHandling:
     def test_downloading_valid_calendars(self, instrument):
         # Handle the two test instruments that we put into the database,
         # which will raise an error because their url values are bogus
-        if instrument.name in ['***REMOVED***',
-                               '***REMOVED***']:
+        if instrument.name in ['**REMOVED**',
+                               '**REMOVED**']:
             pass
         else:
             sc.fetch_xml(instrument)
 
     def test_download_with_date(self):
         doc = etree.fromstring(
-            sc.fetch_xml(instrument=instrument_db['***REMOVED***'],
+            sc.fetch_xml(instrument=instrument_db['**REMOVED**'],
                          dt_from=dt.fromisoformat('2018-11-13T00:00:00'),
                          dt_to=dt.fromisoformat('2018-11-13T23:59:59')))
         # This day should have one entry:
         assert len(doc.findall('entry')) == 1
 
     def test_download_date_w_multiple_entries(self):
-        # This should return an event by '***REMOVED***' from 1PM to 5PM on 11/20/2019
+        # This should return an event by '**REMOVED**' from 1PM to 5PM on 11/20/2019
         doc = etree.fromstring(
-            sc.fetch_xml(instrument=instrument_db['***REMOVED***'],
+            sc.fetch_xml(instrument=instrument_db['**REMOVED**'],
                          dt_from=dt.fromisoformat('2019-11-20T13:40:20'),
                          dt_to=dt.fromisoformat('2019-11-20T17:30:00'))
         )
         # This day should have one entry (pared down from three):
         assert len(doc.findall('entry')) == 1
-        # entry should be user ***REMOVED*** and title "NexusLIMS computer testing"
+        # entry should be user **REMOVED** and title "NexusLIMS computer testing"
         assert doc.find('entry/title').text == "NexusLIMS computer testing"
         assert doc.find('entry/link[@title="UserName"]/'
                         'm:inline/feed/entry/content/m:properties/d:UserName',
-                        namespaces=doc.nsmap).text == "***REMOVED***"
+                        namespaces=doc.nsmap).text == "**REMOVED**"
 
     def test_downloading_bad_calendar(self):
         with pytest.raises(KeyError):
@@ -127,7 +127,7 @@ class TestCalendarHandling:
         with monkeypatch.context() as m:
             m.setenv('nexusLIMS_user', 'bad_user')
             with pytest.raises(AuthenticationError):
-                sc.fetch_xml(instrument_db['***REMOVED***'])
+                sc.fetch_xml(instrument_db['**REMOVED**'])
 
     def test_absolute_path_to_credentials(self, monkeypatch):
         from nexusLIMS.harvester.sharepoint_calendar import get_auth
@@ -169,14 +169,14 @@ class TestCalendarHandling:
             # always returns a 404
             monkeypatch.setattr(requests, 'get', mock_get)
             with pytest.raises(requests.exceptions.ConnectionError):
-                sc.fetch_xml(instrument_db['***REMOVED***'])
+                sc.fetch_xml(instrument_db['**REMOVED**'])
 
     def test_fetch_xml_instrument_none(self, monkeypatch):
         with monkeypatch.context() as m:
             # use bad username so we don't get a response or lock miclims
             m.setenv('nexusLIMS_user', 'bad_user')
             with pytest.raises(AuthenticationError):
-                sc.fetch_xml(instrument_db['***REMOVED***'])
+                sc.fetch_xml(instrument_db['**REMOVED**'])
 
     def test_fetch_xml_instrument_bogus(self, monkeypatch):
         with monkeypatch.context() as m:
@@ -189,34 +189,34 @@ class TestCalendarHandling:
         # at the time of writing this code (2020-06-26), there were 8 records
         # on the Hitachi S4700 after Jan 1. 2020, which should only increase
         # over time
-        xml = sc.fetch_xml(instrument_db['***REMOVED***'],
+        xml = sc.fetch_xml(instrument_db['**REMOVED**'],
                            dt_from=dt.fromisoformat('2020-01-01T00:00:00'))
         doc = etree.fromstring(xml)
         assert len(doc.findall('entry')) >= 8
 
     def test_fetch_xml_only_dt_to(self):
         # There are five events prior to May 1, 2016 on the Hitachi S4700
-        xml = sc.fetch_xml(instrument_db['***REMOVED***'],
+        xml = sc.fetch_xml(instrument_db['**REMOVED**'],
                            dt_to=dt.fromisoformat('2016-05-01T00:00:00'))
         doc = etree.fromstring(xml)
         assert len(doc.findall('entry')) == 5
 
     def test_fetch_xml_calendar_event(self):
         xml = \
-            sc.fetch_xml(instrument=instrument_db['***REMOVED***'],
+            sc.fetch_xml(instrument=instrument_db['**REMOVED**'],
                          dt_from=dt.fromisoformat('2018-11-13T00:00:00'),
                          dt_to=dt.fromisoformat('2018-11-13T23:59:59'))
         cal_event = sc.CalendarEvent.from_xml(xml)
         assert cal_event.title == 'Martensite search'
         assert cal_event.sharepoint_id == 470
-        assert cal_event.username == '***REMOVED***'
+        assert cal_event.username == '**REMOVED**'
         assert cal_event.start_time == dt.fromisoformat(
             '2018-11-13T09:00:00-05:00')
 
     def test_fetch_xml_calendar_event_no_entry(self):
         # tests when there is no matching event found
         xml = \
-            sc.fetch_xml(instrument=instrument_db['***REMOVED***'],
+            sc.fetch_xml(instrument=instrument_db['**REMOVED**'],
                          dt_from=dt.fromisoformat('2010-01-01T00:00:00'),
                          dt_to=dt.fromisoformat('2010-01-01T00:00:01'))
         cal_event = sc.CalendarEvent.from_xml(xml)
@@ -226,42 +226,42 @@ class TestCalendarHandling:
         s = dt(2020, 8, 20, 12, 0, 0)
         e = dt(2020, 8, 20, 16, 0, 40)
         c = sc.CalendarEvent('Test event',
-                             instrument_db['***REMOVED***'],
-                             dt.now(), '***REMOVED***', '***REMOVED***', s, e, 'category',
+                             instrument_db['**REMOVED**'],
+                             dt.now(), '**REMOVED**', '**REMOVED**', s, e, 'category',
                              'purpose', 'sample details', 'projectID', 999)
-        assert c.__repr__() == 'Event for ***REMOVED*** on ***REMOVED*** from ' \
+        assert c.__repr__() == 'Event for **REMOVED** on **REMOVED** from ' \
                                '2020-08-20T12:00:00 to 2020-08-20T16:00:40'
 
         c = sc.CalendarEvent()
         assert c.__repr__() == 'No matching calendar event'
 
-        c = sc.CalendarEvent(instrument=instrument_db['***REMOVED***'])
+        c = sc.CalendarEvent(instrument=instrument_db['**REMOVED**'])
         assert c.__repr__() == 'No matching calendar event for ' \
-                               '***REMOVED***'
+                               '**REMOVED**'
 
     def test_dump_calendars(self, tmp_path):
         from nexusLIMS.harvester.sharepoint_calendar import dump_calendars
         f = os.path.join(tmp_path, 'cal_output.xml')
-        dump_calendars(instrument='***REMOVED***', filename=f)
+        dump_calendars(instrument='**REMOVED**', filename=f)
 
     def test_division_group_lookup(self):
         from nexusLIMS.harvester.sharepoint_calendar import get_events
-        events = get_events(instrument='***REMOVED***',
+        events = get_events(instrument='**REMOVED**',
                             dt_from=dt.fromisoformat('2019-03-06T09:00:00'),
                             dt_to=dt.fromisoformat('2019-03-06T11:00:00'),
-                            user='***REMOVED***')
+                            user='**REMOVED**')
         doc = etree.fromstring(events)
         assert doc.find('event/project/division').text == '642'
         assert doc.find('event/project/group').text == '00'
 
     def test_get_events_good_date(self):
         from nexusLIMS.harvester.sharepoint_calendar import get_events
-        events_1 = get_events(instrument='***REMOVED***',
+        events_1 = get_events(instrument='**REMOVED**',
                               dt_from=dt.fromisoformat('2019-03-13T08:00:00'),
                               dt_to=dt.fromisoformat('2019-03-13T16:00:00'))
         doc = etree.fromstring(events_1)
-        assert doc.find('event/user/userName').text == '***REMOVED***'
-        assert doc.find('event/title').text == '***REMOVED***'
+        assert doc.find('event/user/userName').text == '**REMOVED**'
+        assert doc.find('event/title').text == '**REMOVED**'
 
     def test_calendar_parsing_event_number(self, parse_xml):
         """
@@ -292,9 +292,9 @@ class TestCalendarHandling:
         raw_doc, parsed_docs = parse_xml
 
         # test user parsing:
-        # user '***REMOVED***' has 10 events on the Titan calendar
+        # user '**REMOVED**' has 10 events on the Titan calendar
         raw_user_list = raw_doc.xpath("entry[./link/m:inline/entry/content/"
-                                      "m:properties/d:UserName/text() = '***REMOVED***']",
+                                      "m:properties/d:UserName/text() = '**REMOVED**']",
                                       namespaces=raw_doc.nsmap)
         # parsed_docs['user'] is root <events> tag
         parse_xml_user_list = parsed_docs['user'].findall('event')
@@ -336,13 +336,13 @@ class TestCalendarHandling:
 
         # test date and user parsing:
         # 2019-03-06 has 2 events on the Titan calendar, one of which was
-        # made by ***REMOVED***
+        # made by **REMOVED**
         raw_date_list = raw_doc.xpath("entry[contains("
                                       "./content/m:properties/d:StartTime/"
                                       "text(), '2019-03-06') and "
                                       "./link/m:inline/entry/content/"
                                       "m:properties/d:UserName/text() = "
-                                      "'***REMOVED***']",
+                                      "'**REMOVED**']",
                                       namespaces=raw_doc.nsmap)
         # parsed_docs['user'] is root <events> tag
         parse_xml_date_list = parsed_docs['date_and_user'].findall('event')
@@ -369,9 +369,9 @@ class TestCalendarHandling:
         event = parsed_docs['date_and_user'].find('event')
         tag_dict = OrderedDict([
             ('dateSearched', '2019-03-06'),
-            ('userSearched', '***REMOVED***'),
+            ('userSearched', '**REMOVED**'),
             ('title', 'Bringing up HT'),
-            ('instrument', '***REMOVED***'),
+            ('instrument', '**REMOVED**'),
             ('user', '\n  '),
             ('purpose', 'Still need to bring up HT '
                         'following water filter replacement'),
@@ -379,18 +379,18 @@ class TestCalendarHandling:
             ('description', None),
             ('startTime', '2019-03-06T09:00:00'),
             ('endTime', '2019-03-06T11:00:00'),
-            ('link', instrument_db['***REMOVED***'].api_url + '(501)'),
+            ('link', instrument_db['**REMOVED**'].api_url + '(501)'),
             ('eventId', '501')])
 
         user = parsed_docs['date_and_user'].find('event/user')
-        link_idx = instrument_db['***REMOVED***'].api_url.rfind('/')
-        lnk_base = instrument_db['***REMOVED***'].api_url[:link_idx]
+        link_idx = instrument_db['**REMOVED**'].api_url.rfind('/')
+        lnk_base = instrument_db['**REMOVED**'].api_url[:link_idx]
         user_dict = OrderedDict([
-            ('userName', '***REMOVED***'),
-            ('name', '***REMOVED***'),
-***REMOVED***'),
-            ('phone', '***REMOVED***'),
-            ('office', '***REMOVED***'),
+            ('userName', '**REMOVED**'),
+            ('name', '**REMOVED**'),
+            ('email', '**REMOVED**'),
+            ('phone', '**REMOVED**'),
+            ('office', '**REMOVED**'),
             ('link', f'{lnk_base}/UserInformationList(224)'),
             ('userId', '224')])
 
@@ -428,7 +428,7 @@ class TestCalendarHandling:
             def __init__(self, text):
                 self.text = \
                     """<?xml version="1.0" encoding="utf-8"?>
-<feed xml:base="https://***REMOVED***/***REMOVED***/_api/"
+<feed xml:base="https://**REMOVED**/**REMOVED**/_api/"
       xmlns="http://www.w3.org/2005/Atom"
       xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
       xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"

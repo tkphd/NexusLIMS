@@ -218,7 +218,7 @@ def get_div_and_group(username):
     ----------
     username : str
         a valid NIST username (the short format: e.g. "ear1"
-***REMOVED***).
+        instead of ernst.august.ruska@nist.gov).
 
     Returns
     -------
@@ -355,7 +355,7 @@ def fetch_xml(instrument, dt_from=None, dt_to=None):
 
     # Paths for Nexus Instruments that can be booked through sharepoint
     # Instrument names can be found at
-    # https://***REMOVED***/***REMOVED***/_vti_bin/ListData.svc
+    # https://**REMOVED**/**REMOVED**/_vti_bin/ListData.svc
     # and
     # https://gitlab.nist.gov/gitlab/nexuslims/NexusMicroscopyLIMS/wikis/Sharepoint-Calendar-Information
 
@@ -499,7 +499,7 @@ def get_events(instrument=None,
         present will be returned.
     user : None or str
         Either None or a valid NIST username (the short format: e.g. ``"ear1"``
-***REMOVED***). If None, no user filtering
+        instead of ernst.august.ruska@nist.gov). If None, no user filtering
         will be performed. No verification of username is performed,
         so it is up to the user to make sure this is correct.
     division : None or str
@@ -606,7 +606,7 @@ def dump_calendars(instrument=None, user=None, dt_from=None, dt_to=None,
         present will be returned.
     user : None or str
         Either None or a valid NIST username (the short format: e.g. ``"ear1"``
-***REMOVED***). If None, no user filtering
+        instead of ernst.august.ruska@nist.gov). If None, no user filtering
         will be performed. No verification of username is performed,
         so it is up to the user to make sure this is correct.
     division : None or str

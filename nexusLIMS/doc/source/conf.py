@@ -74,7 +74,7 @@ add_function_parentheses = True
 #     inv.objects.append(o)
 #     text = inv.data_file(contract=True)
 #     ztext = soi.compress(text)
-#     soi.writebytes('***REMOVED***/NexusMicroscopyLIMS/nexuslims/'
+#     soi.writebytes('**REMOVED**/NexusMicroscopyLIMS/nexuslims/'
 #                    'doc/source/objects_lxml.inv', ztext)
 
 intersphinx_mapping = {'python': ('https://docs.python.org/3.7/', None),

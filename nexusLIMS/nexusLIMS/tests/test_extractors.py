@@ -229,7 +229,7 @@ class TestExtractorModule:
 
     def test_parse_metadata_quanta(self, monkeypatch):
         def mock_instr(_):
-            return instruments.instrument_db['***REMOVED***']
+            return instruments.instrument_db['**REMOVED**']
 
         monkeypatch.setattr(nexusLIMS.extractors,
                             "_get_instr", mock_instr)
@@ -252,7 +252,7 @@ class TestExtractorModule:
     def test_parse_metadata_ser(self, ):
         TEST_FILE = os.path.join(
             os.path.dirname(__file__), "files",
-            "642Titan_1_***REMOVED***_14.59.36 Scanning Acquire_dataZeroed_1.ser")
+            "642Titan_1_**REMOVED**_14.59.36 Scanning Acquire_dataZeroed_1.ser")
         meta, thumb_fname = parse_metadata(fname=TEST_FILE)
         os.remove(thumb_fname)
         os.remove(thumb_fname.replace('thumb.png', 'json'))
@@ -280,7 +280,7 @@ class TestExtractorModule:
         meta, thumb_fname = parse_metadata(fname=TEST_FILE)
         # assert that preview is same as our placeholder image (should be)
         assert filecmp.cmp(PLACEHOLDER_PREVIEW, thumb_fname, shallow=False)
-        assert meta['nx_meta']['Data Type'] == '***REMOVED***'
+        assert meta['nx_meta']['Data Type'] == '**REMOVED**'
         assert meta['nx_meta']['DatasetType'] == 'Misc'
         assert '642Titan_13_unreadable_ser.emi' in meta['nx_meta']['emi ' \
                                                                    'Filename']
@@ -310,7 +310,7 @@ class TestDigitalMicrographExtractor:
     def test_dm3_list_file(self, monkeypatch):
         # monkeypatch so DM extractor thinks this file came from FEI Titan TEM
         def mock_instr(_):
-            return instruments.instrument_db['***REMOVED***']
+            return instruments.instrument_db['**REMOVED**']
 
         monkeypatch.setattr(digital_micrograph,
                             "_get_instr", mock_instr)
@@ -326,7 +326,7 @@ class TestDigitalMicrographExtractor:
     def test_642_dm3(self, monkeypatch):
         # monkeypatch so DM extractor thinks this file came from FEI Titan TEM
         def mock_instr(_):
-            return instruments.instrument_db['***REMOVED***']
+            return instruments.instrument_db['**REMOVED**']
 
         monkeypatch.setattr(digital_micrograph,
                             "_get_instr", mock_instr)
@@ -370,13 +370,13 @@ class TestDigitalMicrographExtractor:
         assert meta['nx_meta']['Imaging Mode'] == 'IMAGING'
         assert meta['nx_meta']['Microscope'] == 'MSED Titan'
         assert meta['nx_meta']['Indicated Magnification'] == 8100.0
-        assert meta['nx_meta']['Tecnai User'] == 'MBK1'
+        assert meta['nx_meta']['Tecnai User'] == '**REMOVED**'
         assert meta['nx_meta']['Tecnai Mode'] == 'TEM uP SA Zoom Image'
 
     def test_643_dm3(self, monkeypatch):
         # monkeypatch so DM extractor thinks this file came from FEI Titan STEM
         def mock_instr(_):
-            return instruments.instrument_db['***REMOVED***']
+            return instruments.instrument_db['**REMOVED**']
 
         monkeypatch.setattr(digital_micrograph,
                             "_get_instr", mock_instr)
@@ -471,7 +471,7 @@ class TestDigitalMicrographExtractor:
     def test_jeol3010_dm3(self, monkeypatch):
         # monkeypatch so DM extractor thinks this file came from JEOL 3010
         def mock_instr(_):
-            return instruments.instrument_db['***REMOVED***']
+            return instruments.instrument_db['**REMOVED**']
 
         monkeypatch.setattr(digital_micrograph,
                             "_get_instr", mock_instr)
@@ -480,7 +480,7 @@ class TestDigitalMicrographExtractor:
         assert meta['nx_meta']['Data Type'] == 'TEM_Diffraction'
         assert meta['nx_meta']['DatasetType'] == 'Diffraction'
         assert meta['nx_meta']['Acquisition Device'] == 'Orius '
-        assert meta['nx_meta']['Microscope'] == '***REMOVED*** UHR'
+        assert meta['nx_meta']['Microscope'] == '**REMOVED** UHR'
         assert meta['nx_meta']['Data Dimensions'] == '(2672, 4008)'
         assert meta['nx_meta']['Facility'] == 'Microscopy Nexus'
         assert meta['nx_meta']['Camera/Detector Processing'] == \
@@ -575,8 +575,8 @@ class TestQuantaExtractor:
         metadata = get_quanta_metadata(self.QUANTA_BAD_MDATA)
         assert metadata['nx_meta']['Extractor Warnings'] == \
                'Did not find expected FEI tags. Could not read metadata'
-        assert metadata['nx_meta']['Data Type'] == '***REMOVED***'
-        assert metadata['nx_meta']['Data Type'] == '***REMOVED***'
+        assert metadata['nx_meta']['Data Type'] == '**REMOVED**'
+        assert metadata['nx_meta']['Data Type'] == '**REMOVED**'
 
     def test_modded_metadata(self):
         metadata = get_quanta_metadata(self.QUANTA_MODDED_MDATA)
@@ -596,7 +596,7 @@ class TestSerEmiExtractor:
     def test_642_stem_image_1(self):
         TEST_FILE = os.path.join(
             os.path.dirname(__file__), "files",
-            "642Titan_1_***REMOVED***_14.59.36 Scanning Acquire_dataZeroed_1.ser")
+            "642Titan_1_**REMOVED**_14.59.36 Scanning Acquire_dataZeroed_1.ser")
         meta = fei_emi.get_ser_metadata(TEST_FILE)
         assert meta['nx_meta']['DatasetType'] == 'Image'
         assert meta['nx_meta']['Data Type'] == 'STEM_Imaging'
@@ -612,13 +612,13 @@ class TestSerEmiExtractor:
             'X (μm)': -195.777,
             'Y (μm)': -132.325,
             'Z (μm)': 128.364}
-        assert meta['nx_meta']['User'] == 'MBK1'
+        assert meta['nx_meta']['User'] == '**REMOVED**'
         assert meta['nx_meta']['C2 Lens (%)'] == 22.133
 
     def test_642_stem_image_2(self):
         TEST_FILE = os.path.join(
             os.path.dirname(__file__), "files",
-            "642Titan_1_***REMOVED***_14.59.36 Scanning Acquire_dataZeroed_2.ser")
+            "642Titan_1_**REMOVED**_14.59.36 Scanning Acquire_dataZeroed_2.ser")
         meta = fei_emi.get_ser_metadata(TEST_FILE)
         assert meta['nx_meta']['Defocus (μm)'] == 0
         assert meta['nx_meta']['Data Dimensions'] == '(1024, 1024)'
@@ -634,7 +634,7 @@ class TestSerEmiExtractor:
     def test_642_single_stem_image(self):
         TEST_FILE = os.path.join(
             os.path.dirname(__file__), "files",
-            "642Titan_2_***REMOVED***_HAADF_dataZeroed_1.ser")
+            "642Titan_2_**REMOVED**_HAADF_dataZeroed_1.ser")
         meta = fei_emi.get_ser_metadata(TEST_FILE)
         assert meta['nx_meta']['DatasetType'] == 'Image'
         assert meta['nx_meta']['Data Type'] == 'STEM_Imaging'
@@ -657,7 +657,7 @@ class TestSerEmiExtractor:
     def test_642_eds_spectrum_image(self):
         TEST_FILE = os.path.join(
             os.path.dirname(__file__), "files",
-            "642Titan_3_***REMOVED***_13.50.23 Spectrum image_dataZeroed_1.ser")
+            "642Titan_3_**REMOVED**_13.50.23 Spectrum image_dataZeroed_1.ser")
         meta = fei_emi.get_ser_metadata(TEST_FILE)
         assert meta['nx_meta']['DatasetType'] == 'SpectrumImage'
         assert meta['nx_meta']['Data Type'] == 'STEM_EDS_Spectrum_Imaging'
@@ -679,7 +679,7 @@ class TestSerEmiExtractor:
     def test_642_eds_line_scan_1(self):
         TEST_FILE = os.path.join(
             os.path.dirname(__file__), "files",
-            "642Titan_4_***REMOVED***_15.42.57 Spectrum profile_dataZeroed_1.ser")
+            "642Titan_4_**REMOVED**_15.42.57 Spectrum profile_dataZeroed_1.ser")
         meta = fei_emi.get_ser_metadata(TEST_FILE)
         assert meta['nx_meta']['DatasetType'] == 'SpectrumImage'
         assert meta['nx_meta']['Data Type'] == 'STEM_EDS_Spectrum_Imaging'
@@ -701,7 +701,7 @@ class TestSerEmiExtractor:
     def test_642_eds_line_scan_2(self):
         TEST_FILE = os.path.join(
             os.path.dirname(__file__), "files",
-            "642Titan_4_***REMOVED***_15.43.21 Spectrum positions_dataZeroed_1.ser")
+            "642Titan_4_**REMOVED**_15.43.21 Spectrum positions_dataZeroed_1.ser")
         meta = fei_emi.get_ser_metadata(TEST_FILE)
         assert meta['nx_meta']['DatasetType'] == 'SpectrumImage'
         assert meta['nx_meta']['Data Type'] == 'STEM_EDS_Spectrum_Imaging'
@@ -724,7 +724,7 @@ class TestSerEmiExtractor:
     def test_642_eds_spectrum(self):
         TEST_FILE = os.path.join(
             os.path.dirname(__file__), "files",
-            "642Titan_5_***REMOVED***_16.02.37 EDX Acquire_dataZeroed_1.ser")
+            "642Titan_5_**REMOVED**_16.02.37 EDX Acquire_dataZeroed_1.ser")
         meta = fei_emi.get_ser_metadata(TEST_FILE)
         assert meta['nx_meta']['DatasetType'] == 'Spectrum'
         assert meta['nx_meta']['Data Type'] == 'TEM_EDS_Spectrum'
@@ -812,7 +812,7 @@ class TestSerEmiExtractor:
     def test_642_diffraction_stack(self):
         TEST_FILE = os.path.join(
             os.path.dirname(__file__), "files",
-            "642Titan_7_***REMOVED***_21318 MoTe2 flake2 "
+            "642Titan_7_**REMOVED**_21318 MoTe2 flake2 "
             "D245mm SAED 7b0 fx27k TEM6g 4s_dataZeroed_1.ser")
         meta = fei_emi.get_ser_metadata(TEST_FILE)
         assert meta['nx_meta']['DatasetType'] == 'Diffraction'
@@ -922,11 +922,11 @@ class TestSerEmiExtractor:
     def test_642_emi_list_haadf_diff_stack(self):
         TEST_FILE_1 = os.path.join(
             os.path.dirname(__file__), "files",
-            "642Titan_9_***REMOVED***_92118 35nm Si B3 inspection x10k TEM10d2 "
+            "642Titan_9_**REMOVED**_92118 35nm Si B3 inspection x10k TEM10d2 "
             "large w  f saed10_dataZeroed_1.ser")
         TEST_FILE_2 = os.path.join(
             os.path.dirname(__file__), "files",
-            "642Titan_9_***REMOVED***_92118 35nm Si B3 inspection x10k TEM10d2 "
+            "642Titan_9_**REMOVED**_92118 35nm Si B3 inspection x10k TEM10d2 "
             "large w  f saed10_dataZeroed_2.ser")
         meta_1 = fei_emi.get_ser_metadata(TEST_FILE_1)
         meta_2 = fei_emi.get_ser_metadata(TEST_FILE_2)
@@ -970,19 +970,19 @@ class TestSerEmiExtractor:
     def test_642_emi_list_four_images(self):
         TEST_FILE_1 = os.path.join(
             os.path.dirname(__file__), "files",
-            "642Titan_10_***REMOVED***_11418 Inspection A1 35nm Si membUS100_C35Q33 "
+            "642Titan_10_**REMOVED**_11418 Inspection A1 35nm Si membUS100_C35Q33 "
             "l2266CL130mmx160kSTEM lw15corner_dataZeroed_1.ser")
         TEST_FILE_2 = os.path.join(
             os.path.dirname(__file__), "files",
-            "642Titan_10_***REMOVED***_11418 Inspection A1 35nm Si membUS100_C35Q33 "
+            "642Titan_10_**REMOVED**_11418 Inspection A1 35nm Si membUS100_C35Q33 "
             "l2266CL130mmx160kSTEM lw15corner_dataZeroed_2.ser")
         TEST_FILE_3 = os.path.join(
             os.path.dirname(__file__), "files",
-            "642Titan_10_***REMOVED***_11418 Inspection A1 35nm Si membUS100_C35Q33 "
+            "642Titan_10_**REMOVED**_11418 Inspection A1 35nm Si membUS100_C35Q33 "
             "l2266CL130mmx160kSTEM lw15corner_dataZeroed_3.ser")
         TEST_FILE_4 = os.path.join(
             os.path.dirname(__file__), "files",
-            "642Titan_10_***REMOVED***_11418 Inspection A1 35nm Si membUS100_C35Q33 "
+            "642Titan_10_**REMOVED**_11418 Inspection A1 35nm Si membUS100_C35Q33 "
             "l2266CL130mmx160kSTEM lw15corner_dataZeroed_4.ser")
 
         for m in [fei_emi.get_ser_metadata(f) for f in [TEST_FILE_1,
@@ -1015,7 +1015,7 @@ class TestSerEmiExtractor:
     def test_643_stem_image(self):
         TEST_FILE = os.path.join(
             os.path.dirname(__file__), "files",
-            "643Titan_1_***REMOVED***_09.45.36 Scanning Acquire_dataZeroed_1.ser")
+            "643Titan_1_**REMOVED**_09.45.36 Scanning Acquire_dataZeroed_1.ser")
         meta = fei_emi.get_ser_metadata(TEST_FILE)
         assert meta['nx_meta']['DatasetType'] == 'Image'
         assert meta['nx_meta']['Data Type'] == 'STEM_Imaging'
@@ -1039,10 +1039,10 @@ class TestSerEmiExtractor:
     def test_643_eds_and_eels_spectrum_image(self):
         TEST_FILE_EDS = os.path.join(
             os.path.dirname(__file__), "files",
-            "643Titan_2_***REMOVED***_16.10.32 Spectrum image_dataZeroed_1.ser")
+            "643Titan_2_**REMOVED**_16.10.32 Spectrum image_dataZeroed_1.ser")
         TEST_FILE_EELS = os.path.join(
             os.path.dirname(__file__), "files",
-            "643Titan_2_***REMOVED***_16.10.32 Spectrum image_dataZeroed_2.ser")
+            "643Titan_2_**REMOVED**_16.10.32 Spectrum image_dataZeroed_2.ser")
         meta_1 = fei_emi.get_ser_metadata(TEST_FILE_EDS)
         meta_2 = fei_emi.get_ser_metadata(TEST_FILE_EELS)
 
@@ -1075,7 +1075,7 @@ class TestSerEmiExtractor:
     def test_643_image_stack(self):
         TEST_FILE = os.path.join(
             os.path.dirname(__file__), "files",
-            "643Titan_3_***REMOVED***_17.08.14 Scanning Acquire_Before Full 360 "
+            "643Titan_3_**REMOVED**_17.08.14 Scanning Acquire_Before Full 360 "
             "Dataset_2_dataZeroed_1.ser")
         meta = fei_emi.get_ser_metadata(TEST_FILE)
         assert meta['nx_meta']['DatasetType'] == 'Image'
@@ -1096,7 +1096,7 @@ class TestSerEmiExtractor:
     def test_643_image_stack_2_newer(self):
         TEST_FILE = os.path.join(
             os.path.dirname(__file__), "files",
-            "643Titan_4_***REMOVED***_005_STEM_80kXemi_dataZeroed_1.ser")
+            "643Titan_4_**REMOVED**_005_STEM_80kXemi_dataZeroed_1.ser")
         meta = fei_emi.get_ser_metadata(TEST_FILE)
         assert meta['nx_meta']['DatasetType'] == 'Image'
         assert meta['nx_meta']['Data Type'] == 'STEM_Imaging'
@@ -1136,7 +1136,7 @@ class TestSerEmiExtractor:
             "642Titan_13_unreadable_ser_1.ser")
         meta = fei_emi.get_ser_metadata(TEST_FILE)
         assert 'nx_meta' in meta
-        assert meta['nx_meta']['Data Type'] == '***REMOVED***'
+        assert meta['nx_meta']['Data Type'] == '**REMOVED**'
         assert meta['nx_meta']['DatasetType'] == 'Misc'
         assert 'Creation Time' in meta['nx_meta']
         assert '642Titan_13_unreadable_ser.emi' in \
@@ -1174,7 +1174,7 @@ class TestSerEmiExtractor:
         # instrument, but testing directory doesn't allow proper handling of
         # this, so monkeypatch get_instr_from_filepath
         def mock_get_instr(filename):
-            return instruments.instrument_db['***REMOVED***']
+            return instruments.instrument_db['**REMOVED**']
         monkeypatch.setattr(fei_emi, '_get_instr', mock_get_instr)
         meta = TestSerEmiExtractor._helper_test(caplog)
         assert meta['nx_meta']['Data Type'] == 'TEM_Imaging'
@@ -1185,7 +1185,7 @@ class TestSerEmiExtractor:
         # instrument, but testing directory doesn't allow proper handling of
         # this, so monkeypatch get_instr_from_filepath
         def mock_get_instr(filename):
-            return instruments.instrument_db['***REMOVED***']
+            return instruments.instrument_db['**REMOVED**']
         monkeypatch.setattr(fei_emi, '_get_instr', mock_get_instr)
         meta = TestSerEmiExtractor._helper_test(caplog)
         assert meta['nx_meta']['Data Type'] == 'STEM_Imaging'

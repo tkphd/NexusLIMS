@@ -177,11 +177,11 @@ def get_instr_from_filepath(path):
 
     Examples
     --------
-    >>> inst = get_instr_from_filepath('/mnt/***REMOVED***/Titan/***REMOVED***/' +
-    ...                                '190628 - ***REMOVED*** Training/' +
+    >>> inst = get_instr_from_filepath('/mnt/**REMOVED**_mmfnexus/Titan/**REMOVED**/' +
+    ...                                '190628 - **REMOVED** Training/' +
     ...                                '6_28_2019 Box6 4S/4_330mm.dm3')
     >>> str(inst)
-    '***REMOVED*** in ***REMOVED***'
+    '**REMOVED** in **REMOVED**'
     """
     for k, v in instrument_db.items():
         if _is_subpath(path, _os.path.join(_os.environ["mmfnexus_path"],
@@ -198,7 +198,7 @@ def get_instr_from_calendar_name(cal_name):
     Parameters
     ----------
     cal_name : str
-        A calendar name (e.g. "***REMOVED***") that will be used to search
+        A calendar name (e.g. "**REMOVED**") that will be used to search
         for a matching instrument in the ``api_url`` values
 
     Returns
@@ -209,9 +209,9 @@ def get_instr_from_calendar_name(cal_name):
 
     Examples
     --------
-    >>> inst = get_instr_from_calendar_name('***REMOVED***')
+    >>> inst = get_instr_from_calendar_name('**REMOVED**')
     >>> str(inst)
-    '***REMOVED*** in ***REMOVED***'
+    '**REMOVED** in **REMOVED**'
     """
     for k, v in instrument_db.items():
         if cal_name in v.api_url:

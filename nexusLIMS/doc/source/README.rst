@@ -38,7 +38,7 @@ How to help
 As a Nexus Facility instrument user, the best way to help is to simply use the
 system by remembering to use the :doc:`Session Logger App <session_logger_app>`
 while on a microscope, and then using the NexusLIMS front-end system at
-https://***REMOVED*** to search through and browse your experimental data.
+https://**REMOVED** to search through and browse your experimental data.
 Beyond that, suggestions for improvements or additional features are always
 welcome by submitting a
 `new issue <https://gitlab.nist.gov/gitlab/nexuslims/NexusMicroscopyLIMS/issues/new>`_

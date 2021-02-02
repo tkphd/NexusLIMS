@@ -67,7 +67,7 @@ by clicking the `"Show debug log"` button on the main screen):
 
 If this log window appears on its own (which it shouldn't), we ask that that
 you click the `"Copy"` button to copy all the text to the clipboard and send it
-***REMOVED***>`_ so the NexusLIMS developers
+to `miclims@nist.gov <mailto:miclims@nist.gov>`_ so the NexusLIMS developers
 can resolve the issue.
 
 .. _interrupted:
@@ -130,7 +130,7 @@ information, the program runs a Windows command to mount the drive, such as:
 
 ..  code-block:: bat
 
-    net use H: \\***REMOVED***\***REMOVED***\nexuslims
+    net use H: \\**REMOVED**\**REMOVED**\nexuslims
 
 After this command finishes, the logger confirms that it can access the
 database file as expected, and raises an error if not.
@@ -140,8 +140,8 @@ database file as expected, and raises an error if not.
 
 Using the database file on the mounted drive, the logger application queries
 the ``instruments`` table in the database using the `"hostname"` of the current
-computer. In this way, a computer name (such as ``***REMOVED***``) gets mapped
-to an instrument persistent identifier (PID) (such as ``***REMOVED***``)
+computer. In this way, a computer name (such as ``**REMOVED**``) gets mapped
+to an instrument persistent identifier (PID) (such as ``**REMOVED**``)
 and this value is stored for later use.
 
 3. Checking instrument status
@@ -156,7 +156,7 @@ recent entry (that was not a record generation event):
 ..  code-block:: sql
 
     SELECT event_type, session_identifier, id_session_log, timestamp
-    FROM session_log WHERE instrument = '***REMOVED***'
+    FROM session_log WHERE instrument = '**REMOVED**'
     AND NOT event_type = 'RECORD_GENERATION'
     ORDER BY timestamp DESC LIMIT 1;
 
@@ -183,7 +183,7 @@ the current timestamp is also included in the insertion. As an example:
 
     INSERT INTO session_log (instrument, event_type,
                              session_identifier, user)
-    VALUES ('***REMOVED***', 'START',
+    VALUES ('**REMOVED**', 'START',
             'c9b774c9-4a59-4154-af05-0e2477e57cc4', 'local_user');
 
 After this has finished, the logger runs another query to verify that the row
@@ -281,7 +281,7 @@ the |specfileLink|_ file and running:
 
 The logger application is compiled to ``NexusLIMS Session Logger.exe``, and this
 file is then copied to the centralized file storage at
-``//***REMOVED***/***REMOVED***/mmfnexus/NexusLIMS/NexusLIMS Session Logger.exe``,
+``//**REMOVED**/**REMOVED**/mmfnexus/NexusLIMS/NexusLIMS Session Logger.exe``,
 where it is then pulled down to the individual microscope PCs by the startup
 batch script that is used to mount the centralized file storage. Each Nexus
 microscope has a desktop shortcut that points to this copied file, so users are
@@ -340,10 +340,10 @@ command that is run on their machines:
 
 - The next system call is used by the database communication module
   (|makedbentryLink|_) to get the IP address of the central file system where
-  the database file is stored (``//***REMOVED***/``), since mounting via IP is
+  the database file is stored (``//**REMOVED**/``), since mounting via IP is
   more reliable than using the host name. The command used for this is::
 
-      ping ***REMOVED*** -n 1
+      ping **REMOVED** -n 1
 
   This command will send a single ping to the server and resolve the host name
   to an IP address. The output of the command is parsed to find the IP that
@@ -354,11 +354,11 @@ command that is run on their machines:
       net use
 
   to list the currently mounted network drives. If the required network location
-  (``//***REMOVED***/***REMOVED***/nexusLIMS``) is already mounted, that drive
+  (``//**REMOVED**/**REMOVED**/nexusLIMS``) is already mounted, that drive
   path is used rather than mounting another copy. If it is not, the path will
   be mounted using a command::
 
-      net use H: \\***REMOVED***\***REMOVED***\nexusLIMS
+      net use H: \\**REMOVED**\**REMOVED**\nexusLIMS
 
   The drive letter (in this example ``H:``) is automatically determined by
   finding a currently unused drive letter earlier in the code.

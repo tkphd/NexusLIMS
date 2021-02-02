@@ -9,8 +9,8 @@ Record building workflow
 
 This page describes the process used to build records based on the data saved by
 instruments in the
-`Electron Microscopy Nexus facility <https://***REMOVED***/***REMOVED***/default.aspx>`_
-using `NexusLIMS <https://***REMOVED***>`_.
+`Electron Microscopy Nexus facility <https://**REMOVED**/**REMOVED**/default.aspx>`_
+using `NexusLIMS <https://**REMOVED**>`_.
 At the bottom is an `activity diagram <activity-diagram_>`_ that illustrates
 how the different modules work together to generate records from the centralized
 file storage and the NexusLIMS session database. Throughout this page, links
@@ -36,7 +36,7 @@ system is searched for files matching the session logs in the database, which
 then have their metadata extracted and are parsed into `Acquisition Activities`.
 These activities are written to the .xml record, which is validated against the
 Nexus Microscopy Schema, and finally uploaded to the
-`NexusLIMS CDCS instance <https://***REMOVED***>`_ if everything goes
+`NexusLIMS CDCS instance <https://**REMOVED**>`_ if everything goes
 according to plan. If not, an error is logged to the database for that session
 and the operators of NexusLIMS are notified so the issue can be corrected.
 
@@ -236,16 +236,16 @@ case the FEI Titan TEM in Building 223):
 
 .. code-block::
 
-    Nexus Instrument: ***REMOVED***
-    API url:          https://***REMOVED***/***REMOVED***/_vti_bin/ListData.svc/***REMOVED***
+    Nexus Instrument: **REMOVED**
+    API url:          https://**REMOVED**/**REMOVED**
     Calendar name:    FEI Titan TEM
-    Calendar url:     https://***REMOVED***/***REMOVED***/Lists/***REMOVED***/calendar.aspx
+    Calendar url:     https://**REMOVED**/**REMOVED**/calendar.aspx
     Schema name:      FEI Titan TEM
-    Location:         ***REMOVED***
-    Property tag:     ***REMOVED***
+    Location:         **REMOVED**
+    Property tag:     **REMOVED**
     Filestore path:   ./Titan
-    Computer IP:      ***REMOVED***
-    Computer name:    ***REMOVED***
+    Computer IP:      **REMOVED**
+    Computer name:    **REMOVED**
     Computer mount:   M:/
 
 Using the `Filestore path` information, NexusLIMS searches for files

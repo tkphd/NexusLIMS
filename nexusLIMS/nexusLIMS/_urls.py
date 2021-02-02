@@ -26,6 +26,6 @@
 #  OR USE OF, THE SOFTWARE OR SERVICES PROVIDED HEREUNDER.
 #
 
-calendar_root_url = 'https://***REMOVED***/***REMOVED***/'
-ldap_url = 'ldap://***REMOVED***'
-cdcs_url = 'https://***REMOVED***/'
+calendar_root_url = 'https://<SHAREPOINT CALENDAR URL>'
+ldap_url = 'ldap://<LDAP SERVER URL>'
+cdcs_url = 'https://<CDCS INSTANCE URL>'

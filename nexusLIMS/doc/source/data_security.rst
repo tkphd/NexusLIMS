@@ -33,7 +33,7 @@ respect to the data storage on CFS2E, the ``miclims`` account has the
 same access rights as a regular Nexus user does from their desktop computer.
 More specifically, that means that the entire NexusLIMS codebase has just
 `read-only` access to the path where research data is stored (in the current
-implementation: ``\\***REMOVED***\***REMOVED***\mmfnexus\``). In the unlikely
+implementation: ``\\**REMOVED**\**REMOVED**\mmfnexus\``). In the unlikely
 event that a mistake in the code attempted to move or delete a raw data file
 from this folder, it would fail with a `Permission Error`, just as such an
 operation would from a user's workstation in their office (only the microscope
@@ -54,14 +54,14 @@ two environment variables that must be set prior to running the NexusLIMS code:
 configuration change, for instance.
 
 In the current implementation, ``mmfnexus_path`` is the path on CFS2E from above
-(``./***REMOVED***/mmfnexus``). ``nexusLIMS_path`` is a parallel
-folder (``./***REMOVED***/nexusLIMS/mmfnexus``) that anyone in
+(``./**REMOVED**/mmfnexus``). ``nexusLIMS_path`` is a parallel
+folder (``./**REMOVED**/nexusLIMS/mmfnexus``) that anyone in
 MML can read (so users can access JSON-formatted metadata from their raw files
 and the preview images that are generated when a record is built).
 Only the NexusLIMS team (and ``miclims``) has write access to this folder,
 however. All session information is maintained in an SQLite database
 that is contained within the ``nexusLIMS`` folder as well (currently:
-``./***REMOVED***/nexusLIMS/nexuslims_db.sqlite``) -- see the
+``./**REMOVED**/nexusLIMS/nexuslims_db.sqlite``) -- see the
 :doc:`NexusLIMS database <database>` page for more details.
 
 Finally, because all of this data is stored on OISM-managed centralized file

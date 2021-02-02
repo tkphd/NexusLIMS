@@ -16,7 +16,7 @@ user input. There is extensive
 [documentation](http://nexuslims.ipages.nist.gov/NexusMicroscopyLIMS/doc/index.html)
 however, for those who wish to learn more about the nuts and bolts of how the
 back-end operates to create the records that users view at
-https://***REMOVED***.
+https://**REMOVED**.
 
 ## How to help
 
@@ -24,7 +24,7 @@ As a Nexus Facility instrument user, the best way to help is to simply use the
 system by remembering to start the 
 [Session Logger App](http://nexuslims.ipages.nist.gov/NexusMicroscopyLIMS/doc/session_logger_app.html)
 while on a microscope, and then using the NexusLIMS front-end system at
-https://***REMOVED*** to search through and browse your experimental data.
+https://**REMOVED** to search through and browse your experimental data.
 Beyond that, suggestions for improvements or additional features are always
 appreciated, and can be sent to the developers by submitting a
 [new issue](https://gitlab.nist.gov/gitlab/nexuslims/NexusMicroscopyLIMS/issues/new)

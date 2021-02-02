@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------
-***REMOVED***>]
+# [Author: Joshua Taillon <joshua.taillon@nist.gov>]
 #
 #   Gitlab Backup Script
 #

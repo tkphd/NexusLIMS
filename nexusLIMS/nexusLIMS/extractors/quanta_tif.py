@@ -84,7 +84,7 @@ def get_quanta_metadata(filename):
     if user_idx == -1:
         _logger.warning(f'Did not find expected FEI tags in .tif file: '
                         f'{filename}')
-        mdict['nx_meta']['Data Type'] = '***REMOVED***'
+        mdict['nx_meta']['Data Type'] = '**REMOVED**'
         mdict['nx_meta']['Extractor Warnings'] = 'Did not find expected FEI ' \
                                                  'tags. Could not read metadata'
         mdict['nx_meta'] = _sort_dict(mdict['nx_meta'])

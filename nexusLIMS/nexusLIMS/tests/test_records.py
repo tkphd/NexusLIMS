@@ -45,7 +45,7 @@ class TestRecordBuilder:
             assert len(found_files) == ans
 
         assert f'{os.environ["mmfnexus_path"]}' \
-               f'/Titan/***REMOVED***/200204 - NbN-Gr-SiC - ***REMOVED*** ***REMOVED*** ' \
+               f'/Titan/**REMOVED**/200204 - NbN-Gr-SiC - **REMOVED** **REMOVED** ' \
                f'- Titan/15 - 620k.dm3' in file_list_list[5]
 
     def test_process_new_records_dry_run(self):
@@ -102,44 +102,44 @@ class TestRecordBuilder:
 
         # test some various values from the records saved to disk:
         expected = {
-            '2018-11-13_***REMOVED***_7de34313.xml': {
+            '2018-11-13_**REMOVED**_7de34313.xml': {
                 '/title': 'Martensite search',
                 '//acquisitionActivity': 4,
                 '//dataset': 37,
                 '/summary/motivation': 'Trying to find us some martensite!',
-                '/summary/instrument': '***REMOVED***'
+                '/summary/instrument': '**REMOVED**'
             },
-            '2019-07-24_***REMOVED***_41ec0ad1.xml': {
+            '2019-07-24_**REMOVED**_41ec0ad1.xml': {
                 '/title': 'Examining beam dose impacts',
                 '//acquisitionActivity': 6,
                 '//dataset': 55,
                 '/summary/motivation': 'Electron beam dose effect of C36H74 '
                                        'paraffin polymer under DC electron '
                                        'beam',
-                '/summary/instrument': '***REMOVED***'
+                '/summary/instrument': '**REMOVED**'
             },
-            '2019-09-06_***REMOVED***_9c8f3a8d.xml': {
+            '2019-09-06_**REMOVED**_9c8f3a8d.xml': {
                 '/title': 'Looking for Nickel Alloys',
                 '//acquisitionActivity': 5,
                 '//dataset': 28,
                 '/summary/motivation': 'Determine the composition of platinum '
                                        'nickel alloys using EDX spectroscopy.',
-                '/summary/instrument': '***REMOVED***'
+                '/summary/instrument': '**REMOVED**'
             },
-            '2019-11-06_***REMOVED***_1dab79db.xml': {
+            '2019-11-06_**REMOVED**_1dab79db.xml': {
                 '/title': 'Reactor Samples',
                 '//acquisitionActivity': 15,
                 '//dataset': 38,
                 '/summary/motivation': 'EELS mapping of layer intermixing.',
-                '/summary/instrument': '***REMOVED***'
+                '/summary/instrument': '**REMOVED**'
             },
-            '2020-02-04_***REMOVED***_1c3a6a8d.xml': {
+            '2020-02-04_**REMOVED**_1c3a6a8d.xml': {
                 '/title': 'Experiment on the FEI Titan TEM on '
                           'Tuesday Feb. 04, 2020',
                 '//acquisitionActivity': 4,
                 '//dataset': 18,
                 '/summary/motivation': None,
-                '/summary/instrument': '***REMOVED***'
+                '/summary/instrument': '**REMOVED**'
             },
         }
         for f in sorted(xmls):
@@ -197,7 +197,7 @@ class TestRecordBuilder:
         def mock_get_sessions():
             return [session_handler.Session(
                 session_identifier='1c3a6a8d-9038-41f5-b969-55fd02e12345',
-                instrument=instrument_db['***REMOVED***'],
+                instrument=instrument_db['**REMOVED**'],
                 dt_from=_dt.fromisoformat('2020-02-04T09:00:00.000'),
                 dt_to=_dt.fromisoformat('2020-02-04T12:00:00.000'),
                 user='None')]
@@ -213,7 +213,7 @@ class TestRecordBuilder:
         assert "Could not validate record, did not write to disk" in caplog.text
 
     def test_dump_record(self, monkeypatch, fix_mountain_time):
-        out_fname = _rb.dump_record(instrument_db['***REMOVED***'],
+        out_fname = _rb.dump_record(instrument_db['**REMOVED**'],
                                     dt_from=_dt.fromisoformat('2020-02-04T'
                                                               '09:00:00.000'),
                                     dt_to=_dt.fromisoformat('2020-02-04T'
@@ -231,7 +231,7 @@ class TestRecordBuilder:
 
 @pytest.fixture(scope='module')
 def gnu_find_activities(fix_mountain_time):
-    instr = instrument_db['***REMOVED***']
+    instr = instrument_db['**REMOVED**']
     dt_from = _dt.fromisoformat('2018-11-13T13:00:00.000')
     dt_to = _dt.fromisoformat('2018-11-13T16:00:00.000')
     activities_str, activities_list = _rb.build_acq_activities(
@@ -329,18 +329,18 @@ class TestSession:
     def test_session_repr(self):
         s = session_handler.Session(
                 session_identifier='1c3a6a8d-9038-41f5-b969-55fd02e12345',
-                instrument=instrument_db['***REMOVED***'],
+                instrument=instrument_db['**REMOVED**'],
                 dt_from=_dt.fromisoformat('2020-02-04T09:00:00.000'),
                 dt_to=_dt.fromisoformat('2020-02-04T12:00:00.000'),
                 user='None')
         assert s.__repr__() == '2020-02-04T09:00:00 to ' \
-                               '2020-02-04T12:00:00 on ***REMOVED***'
+                               '2020-02-04T12:00:00 on **REMOVED**'
 
     def test_bad_db_status(self, monkeypatch):
         uuid = uuid4()
         q = f"INSERT INTO session_log " \
             f"(instrument, event_type, session_identifier, record_status) " \
-            f"VALUES ('***REMOVED***', 'START', " \
+            f"VALUES ('**REMOVED**', 'START', " \
             f"'{uuid}', 'TO_BE_BUILT');"
         make_db_query(q)
         # because we put in an extra START log with TO_BE_BUILT status,

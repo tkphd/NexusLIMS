@@ -297,8 +297,8 @@ function get_abs_filename() {
 }
 
 function send_email() {
-***REMOVED*** << EOF
-***REMOVED***
+sendmail joshua.taillon@nist.gov << EOF
+To: joshua.taillon@nist.gov
 From: miclims@nist.gov
 Subject: ERROR in NexusLIMS record builder
 

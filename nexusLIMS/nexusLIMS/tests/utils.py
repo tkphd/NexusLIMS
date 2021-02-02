@@ -59,7 +59,7 @@ tars = \
      'PARSE_META_642_TITAN': '01 - 13k - 30um obj.dm3.tar.gz',
      'FEI_SER': 'fei_emi_ser_test_files.tar.gz',
      'DB': 'test_db.sqlite.tar.gz',
-     'RECORD': '2018-11-13_***REMOVED***_7de34313.xml.tar.gz'
+     'RECORD': '2018-11-13_**REMOVED**_7de34313.xml.tar.gz'
      }
 
 

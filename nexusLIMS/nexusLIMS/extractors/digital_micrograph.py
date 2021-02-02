@@ -192,7 +192,7 @@ def get_dm3_metadata(filename):
 def parse_643_titan(mdict):
     """
     Add/adjust metadata specific to the 643 FEI Titan
-    ('`***REMOVED*** in ***REMOVED***`') to the metadata dictionary
+    ('`**REMOVED** in **REMOVED**`') to the metadata dictionary
 
     Parameters
     ----------
@@ -224,7 +224,7 @@ def parse_643_titan(mdict):
 def parse_642_titan(mdict):
     """
     Add/adjust metadata specific to the 642 FEI Titan
-    ('`***REMOVED*** in ***REMOVED***`') to the metadata dictionary
+    ('`**REMOVED** in **REMOVED**`') to the metadata dictionary
 
     Parameters
     ----------
@@ -355,7 +355,7 @@ def parse_642_titan(mdict):
 def parse_642_jeol(mdict):
     """
     Add/adjust metadata specific to the 642 FEI Titan
-    ('`***REMOVED*** in ***REMOVED***`') to the metadata dictionary
+    ('`**REMOVED** in **REMOVED**`') to the metadata dictionary
 
     Parameters
     ----------
@@ -392,9 +392,9 @@ def parse_642_jeol(mdict):
 
 
 _instr_specific_parsers = {
-    '***REMOVED***': parse_643_titan,
-    '***REMOVED***': parse_642_titan,
-    '***REMOVED***': parse_642_jeol
+    '**REMOVED**': parse_643_titan,
+    '**REMOVED**': parse_642_titan,
+    '**REMOVED**': parse_642_jeol
 }
 
 
@@ -599,9 +599,9 @@ def parse_dm3_eels_info(mdict):
 
     # different instruments have the spectrometer information in different
     # places...
-    if mdict['nx_meta']['Instrument ID'] == '***REMOVED***':
+    if mdict['nx_meta']['Instrument ID'] == '**REMOVED**':
         base = pre_path + ['EELS', 'Acquisition', 'Spectrometer']
-    elif mdict['nx_meta']['Instrument ID'] == '***REMOVED***':
+    elif mdict['nx_meta']['Instrument ID'] == '**REMOVED**':
         base = pre_path + ['EELS Spectrometer']
     else:
         base = None

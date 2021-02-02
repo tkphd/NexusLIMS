@@ -166,7 +166,7 @@ import, rather than every time information is needed.
 |                    |              | in the Nexus Microscopy facility, built |
 |                    |              | from the make, model, and type of       |
 |                    |              | instrument, plus the property tag       |
-|                    |              | (e.g. ``***REMOVED***`` )        |
+|                    |              | (e.g. ``**REMOVED**`` )        |
 +--------------------+--------------+-----------------------------------------+
 | ``api_url``        | TEXT         | The calendar API endpoint url for this  |
 |                    |              | instrument's scheduler                  |

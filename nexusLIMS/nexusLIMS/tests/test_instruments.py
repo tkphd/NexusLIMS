@@ -36,16 +36,16 @@ class TestInstruments:
 
     def test_database_contains_instruments(self):
         from nexusLIMS.instruments import instrument_db
-        instruments_to_test = ['***REMOVED***',
-                               '***REMOVED***',
-                               '***REMOVED***',
-                               '***REMOVED***',
-                               '***REMOVED***',
-                               '***REMOVED***',
-                               '***REMOVED***',
-                               '***REMOVED***',
-                               '***REMOVED***',
-                               '***REMOVED***']
+        instruments_to_test = ['**REMOVED**',
+                               '**REMOVED**',
+                               '**REMOVED**',
+                               '**REMOVED**',
+                               '**REMOVED**',
+                               '**REMOVED**',
+                               '**REMOVED**',
+                               '**REMOVED**',
+                               '**REMOVED**',
+                               '**REMOVED**']
         for i in instruments_to_test:
             assert i in instrument_db
             assert isinstance(instrument_db[i], Instrument)
@@ -54,44 +54,44 @@ class TestInstruments:
 
     def test_instrument_str(self):
         assert \
-            str(instrument_db['***REMOVED***']) == \
-            '***REMOVED*** in ***REMOVED***'
+            str(instrument_db['**REMOVED**']) == \
+            '**REMOVED** in **REMOVED**'
 
     def test_instrument_repr(self):
-        api_url = 'https://***REMOVED***/***REMOVED***/_vti_bin/' \
-                  'ListData.svc/***REMOVED***'
-        cal_url = 'https://***REMOVED***/***REMOVED***/Lists/' \
-                  '***REMOVED***/calendar.aspx'
+        api_url = 'https://**REMOVED**/' \
+                  'ListData.svc/**REMOVED**'
+        cal_url = 'https://**REMOVED**/' \
+                  '**REMOVED**/calendar.aspx'
 
         assert \
-            repr(instrument_db['***REMOVED***']) == \
-            f'Nexus Instrument: ***REMOVED***\n' + \
+            repr(instrument_db['**REMOVED**']) == \
+            f'Nexus Instrument: **REMOVED**\n' + \
             f'API url:          {api_url}\n' + \
             f'Calendar name:    FEI Titan TEM\n' + \
             f'Calendar url:     {cal_url}\n' + \
             f'Schema name:      FEI Titan TEM\n' \
-            f'Location:         ***REMOVED***\n' \
-            f'Property tag:     ***REMOVED***\n' \
+            f'Location:         **REMOVED**\n' \
+            f'Property tag:     **REMOVED**\n' \
             f'Filestore path:   ./Titan\n' \
-            f'Computer IP:      ***REMOVED***\n' \
-            f'Computer name:    ***REMOVED***\n' \
+            f'Computer IP:      **REMOVED**\n' \
+            f'Computer name:    **REMOVED**\n' \
             f'Computer mount:   M:/\n'
 
     def test_get_instr_from_filepath(self):
         path = os.path.join(os.environ['mmfnexus_path'],
-                            'Titan/***REMOVED***/190628 - ***REMOVED*** Training/'
+                            'Titan/**REMOVED**/190628 - **REMOVED** Training/'
                             '6_28_2019 Box6 4S/4_330mm.dm3')
         instr = get_instr_from_filepath(path)
         assert isinstance(instr, Instrument)
-        assert instr.name == '***REMOVED***'
+        assert instr.name == '**REMOVED**'
 
         instr = get_instr_from_filepath('bad_path_no_instrument')
         assert instr is None
 
     def test_get_instr_from_cal_name(self):
-        instr = get_instr_from_calendar_name('***REMOVED***')
+        instr = get_instr_from_calendar_name('**REMOVED**')
         assert isinstance(instr, Instrument)
-        assert instr == instrument_db['***REMOVED***']
+        assert instr == instrument_db['**REMOVED**']
 
     def test_get_instr_from_cal_name_none(self):
         instr = get_instr_from_calendar_name('bogus calendar name')

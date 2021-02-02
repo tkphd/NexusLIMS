@@ -105,7 +105,7 @@ class DBSessionLogger:
                  verbosity=0,
                  db_name='nexuslims_db.sqlite',
                  user=None,
-                 hostname='***REMOVED***'):
+                 hostname='**REMOVED**'):
         """
 
         Parameters
@@ -141,15 +141,15 @@ class DBSessionLogger:
             # fail with a "Database is Locked" error
             self.password = None
             self.full_path = os.path.join(self.db_path, self.db_name)
-            self.cpu_name = "***REMOVED***"
-            self.user = '***REMOVED***'
+            self.cpu_name = "**REMOVED**"
+            self.user = '**REMOVED**'
             self.log('(TEST) Using {} as path to db'.format(self.full_path), 2)
             self.log('(TEST) Using {} as cpu name'.format(self.cpu_name), 2)
             self.log('(TEST) if not testing, self.full_path would be '
                      '{}\\{}'.format(self.drive_letter, db_name), 1)
         else:
             # actual values to use in production
-            self.db_path = '\\***REMOVED***\\nexuslims'
+            self.db_path = '\\**REMOVED**\\nexuslims'
             try:
                 self.password = os.environ['MMFQUANT_PASS']
             except KeyError as e:
@@ -334,7 +334,7 @@ class DBSessionLogger:
                                                           ip if have_ip else
                                                           self.hostname,
                                                           self.db_path) + \
-                            '/user:***REMOVED*** {}'.format(self.password)
+                            '/user:NIST\\mmfquant {}'.format(self.password)
             self.log('mounting {}'.format(self.drive_letter), 2)
 
             # mounting requires a security policy:

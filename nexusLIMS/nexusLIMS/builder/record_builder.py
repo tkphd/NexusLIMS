@@ -95,7 +95,7 @@ def build_record(instrument, dt_from, dt_to,
         :py:func:`~.sharepoint_calendar.fetch_xml`.
     user : str or None
         A valid NIST username (the short format: e.g. "ear1"
-***REMOVED***). Controls the results
+        instead of ernst.august.ruska@nist.gov). Controls the results
         returned from the calendar - value is as specified in
         :py:func:`~.sharepoint_calendar.get_events`
     sample_id : str or None

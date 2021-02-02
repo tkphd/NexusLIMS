@@ -162,7 +162,7 @@ def get_ser_metadata(filename):
     # we could not read the signal, so add some basic metadata and return
     if ser_error:
         metadata['nx_meta']['DatasetType'] = 'Misc'
-        metadata['nx_meta']['Data Type'] = '***REMOVED***'
+        metadata['nx_meta']['Data Type'] = '**REMOVED**'
         metadata['nx_meta']['warnings'] = []
         # sort the nx_meta dictionary (recursively) for nicer display
         metadata['nx_meta'] = _sort_dict(metadata['nx_meta'])

@@ -41,7 +41,7 @@ setup(
                      'Nexus Facility',
 
     # The project's main homepage.
-    url='https://***REMOVED***/'
+    url='https://**REMOVED**/'
         'SitePages/Home.aspx',
 
     # Author details
