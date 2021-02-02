@@ -7,30 +7,24 @@ This documentation contains a number of pages that detail the processes by
 which NexusLIMS harvests and combines data from multiple sources to build
 a record of an experiment on a Nexus facility microscope.
 
+## Important note
+
+As part of the process of open-sourcing this code, a number of private internal
+references to NIST infrastructure have been removed, meaning a
+straight-away installation will likely not work without some tweaking.
+This code is provided as an inspiration and implementation reference,
+but will require some work to make it generalizable to other infrastructures
+that has not yet been completed.
+
 ## Where to get help?
 
 Most typical users will have little reason to interact directly with the
 NexusLIMS back-end code contained in this repository, since it operates
-completely automatically and builds experimental records without any need for 
-user input. There is extensive 
-[documentation](http://nexuslims.ipages.nist.gov/NexusMicroscopyLIMS/doc/index.html)
+completely automatically and builds experimental records without any need for
+user input. There is extensive
+[documentation](http://pages.nist.gov/NexusLIMS)
 however, for those who wish to learn more about the nuts and bolts of how the
-back-end operates to create the records that users view at
-https://**REMOVED**.
-
-## How to help
-
-As a Nexus Facility instrument user, the best way to help is to simply use the
-system by remembering to start the 
-[Session Logger App](http://nexuslims.ipages.nist.gov/NexusMicroscopyLIMS/doc/session_logger_app.html)
-while on a microscope, and then using the NexusLIMS front-end system at
-https://**REMOVED** to search through and browse your experimental data.
-Beyond that, suggestions for improvements or additional features are always
-appreciated, and can be sent to the developers by submitting a
-[new issue](https://gitlab.nist.gov/gitlab/nexuslims/NexusMicroscopyLIMS/issues/new)
-in this repository. The current status of development can also be tracked on
-the [boards](https://gitlab.nist.gov/gitlab/nexuslims/NexusMicroscopyLIMS/-/boards)
-page.
+back-end operates.
 
 ## About the NexusLIMS logo
 
