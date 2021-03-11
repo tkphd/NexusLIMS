@@ -7,6 +7,9 @@ This documentation contains a number of pages that detail the processes by
 which NexusLIMS harvests and combines data from multiple sources to build
 a record of an experiment on a Nexus facility microscope.
 
+These records conform to the Nexus Experimental schema, published and 
+available at https://doi.org/10.18434/M32245.
+
 ## Important note
 
 As part of the process of open-sourcing this code, a number of private internal
